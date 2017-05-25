@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TestingGoogleMap.Models.Map>
+
+<h2>Change Landmarks</h2>
+
+<div class="row">
+    <div class="col-sm-6" style="background-color: white;">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>*@
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a onClick="initMapSingle(@item.Lat, @item.Long);" style="cursor: pointer; ">@item.Title</a>
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>*@
+                </tr>
+            }
+        </table>
+<p>@Html.ActionLink("Create New", "Create", "Maps")</p>
+    </div>
+    <div class="col-sm-6" id="map"></div>
+</div>
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb35GFpToNtidA7VfBEZS1vOEgiIxJ2vI&callback=initMap">
+</script>
